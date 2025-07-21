@@ -22,4 +22,4 @@ jobs:
           verb: call
           module: not-working
           args: |
-            say-hello
+            say-hello \
