@@ -1,0 +1,13 @@
+{
+  "name": "not-working",
+  "engineVersion": "v0.18.6",
+  "sdk": {
+    "source": "go"
+  },
+  "dependencies": [
+    {
+      "name": "other-module",
+      "source": "../other-module"
+    }
+  ]
+}
