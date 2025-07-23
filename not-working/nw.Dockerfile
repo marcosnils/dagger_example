@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/azure-cli:2.75.0
+FROM alpine
