@@ -24,10 +24,8 @@ type NotWorking struct{}
 // Create a base container that builds from a Dockerfile
 func (m *NotWorking) BaseContainer() *dagger.Container {
 	return dag.Container().Build(
-		dag.CurrentModule().Source().Directory("."),
-		dagger.ContainerBuildOpts{
-			Dockerfile: "./nw.Dockerfile",
-		})
+		dag.Directory().WithNewFile("Dockerfile", "FROM alpine\n"),
+	)
 }
 
 // Call a function from the other module
