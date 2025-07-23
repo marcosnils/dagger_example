@@ -19,12 +19,26 @@ import (
 	"dagger/not-working/internal/dagger"
 )
 
-type NotWorking struct{}
+type NotWorking struct {
+	// +private
+	Src *dagger.Directory
+}
+
+func New(
+	// +defaultPath="."
+	src *dagger.Directory,
+) *NotWorking {
+	// Create a new NotWorking module with a default source directory
+	return &NotWorking{
+		Src: src,
+	}
+}
 
 // Create a base container that builds from a Dockerfile
 func (m *NotWorking) BaseContainer() *dagger.Container {
 	return dag.Container().Build(
-		dag.Directory().WithNewFile("Dockerfile", "FROM alpine\n"),
+		m.Src,
+		dagger.ContainerBuildOpts{Dockerfile: "nw.Dockerfile"},
 	)
 }
 
